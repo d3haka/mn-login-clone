@@ -1,5 +1,6 @@
 "use client";
 
+import * as motion from "motion/react-client";
 import * as React from "react";
 import * as TabsPrimitive from "@radix-ui/react-tabs";
 
@@ -33,6 +34,7 @@ function TabsList({
 
 function TabsTrigger({
   className,
+  children,
   ...props
 }: React.ComponentProps<typeof TabsPrimitive.Trigger>) {
   return (
@@ -40,11 +42,18 @@ function TabsTrigger({
       data-slot="tabs-trigger"
       className={cn(
         "/data-[state=active]:bg-background dark:data-[state=active]:text-foreground focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:outline-ring dark:data-[state=active]:border-input dark:data-[state=active]:bg-input/30 text-foreground dark:text-muted-foreground /gap-1.5 /rounded-md /data-[state=active]:shadow-sm inline-flex h-[calc(100%-1px)] flex-1 items-center justify-center border border-transparent px-2 pb-4 text-sm font-medium whitespace-nowrap transition-[color,box-shadow] focus-visible:ring-[3px] focus-visible:outline-1 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
-        "/data-[state=active]:border-b-2 /data-[state=active]:border-b-primary data-[state=active]:text-primary relative cursor-pointer text-center transition-colors duration-600",
+        "/data-[state=active]:border-b-2 /data-[state=active]:border-b-primary data-[state=active]:text-primary relative cursor-pointer text-center",
+        "relative data-[state=active]:[&_div.absolute]:visible",
         className,
       )}
       {...props}
-    />
+    >
+      <motion.div
+        initial
+        className="bg-primary /transition-all /duration-400 invisible absolute -bottom-0.5 h-0.5 w-full"
+      ></motion.div>
+      {children}
+    </TabsPrimitive.Trigger>
   );
 }
 

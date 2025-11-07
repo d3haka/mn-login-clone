@@ -147,14 +147,14 @@ export default function AuthPage() {
         <TabsList className="relative">
           <TabsTrigger value="phone">شماره همراه</TabsTrigger>
           <TabsTrigger value="email">ایمیل</TabsTrigger>
-          <div
+          {/* <div
             className={cn(
               "bg-primary absolute bottom-0 h-0.5 w-1/2 transition-all duration-400",
               tabValue === "phone"
                 ? "left-1/4 -translate-x-1/2"
                 : "left-3/4 -translate-x-1/2",
             )}
-          ></div>
+          ></div> */}
         </TabsList>
         <TabsContent value="phone">
           <form
