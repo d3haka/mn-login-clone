@@ -24,14 +24,17 @@ import { toast } from "sonner";
 const phoneSchema = z.object({
   phone: z
     .string()
+    .min(1, { error: "شماره همراه را وارد نمایید" })
     .refine(val => /^[۰-۹]{10}$/.test(val), { error: "شماره همراه صحیح نمی‌باشد" })
     .transform(val => toEnglishNumber(val)),
-  // phone: z.coerce.number(),
 });
 type PhoneSchema = z.infer<typeof phoneSchema>;
 
 const emailSchema = z.object({
-  email: z.email({ error: "ایمیل صحیح نمی‌باشد" }),
+  email: z
+    .string()
+    .min(1, { error: "ایمیل را وارد نمایید" })
+    .email({ error: "ایمیل صحیح نمی‌باشد" }),
   pass: z.string().min(6, { error: "رمزعبور باید حداقل ۶ کاراکتر باشد" }),
 });
 
@@ -218,7 +221,7 @@ export default function AuthPage() {
                       {isInvalid && (
                         <FieldError
                           className="text-right text-xs"
-                          errors={field.state.meta.errors}
+                          errors={[field.state.meta.errors[0]]}
                         />
                       )}
                     </Field>
@@ -260,7 +263,7 @@ export default function AuthPage() {
                       {isInvalid && (
                         <FieldError
                           className="text-right text-xs"
-                          errors={field.state.meta.errors}
+                          errors={[field.state.meta.errors[0]]}
                         />
                       )}
                     </Field>
