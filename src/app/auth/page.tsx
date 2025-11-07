@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -13,7 +12,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { cn } from "@/lib/utils";
 import { toEnglishNumber, toPersianNumber } from "@/utils";
 import Image from "next/image";
 import { useState } from "react";
@@ -145,16 +143,12 @@ export default function AuthPage() {
         onValueChange={e => setTabValue(e as "phone" | "email")}
       >
         <TabsList className="relative">
-          <TabsTrigger value="phone">شماره همراه</TabsTrigger>
-          <TabsTrigger value="email">ایمیل</TabsTrigger>
-          {/* <div
-            className={cn(
-              "bg-primary absolute bottom-0 h-0.5 w-1/2 transition-all duration-400",
-              tabValue === "phone"
-                ? "left-1/4 -translate-x-1/2"
-                : "left-3/4 -translate-x-1/2",
-            )}
-          ></div> */}
+          <TabsTrigger isActive={tabValue === "phone"} value="phone">
+            شماره همراه
+          </TabsTrigger>
+          <TabsTrigger isActive={tabValue === "email"} value="email">
+            ایمیل
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="phone">
           <form
@@ -304,18 +298,6 @@ export default function AuthPage() {
               </emailForm.Field>
             </FieldGroup>
           </form>
-          {/* <div className="mb-2">
-            <Label htmlFor="email-id" className="mb-1" dir="rtl">
-              ایمیل
-            </Label>
-            <Input id="email-id" />
-          </div>
-          <div>
-            <Label htmlFor="pass-id" className="mb-1" dir="rtl">
-              رمز عبور
-            </Label>
-            <Input id="pass-id" />
-          </div> */}
         </TabsContent>
       </Tabs>
 

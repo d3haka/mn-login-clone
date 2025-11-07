@@ -3,11 +3,13 @@ import { ReactNode } from "react";
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
-    <main className="w-screen h-screen grid grid-cols-1 lg:grid-cols-2">
-      <div className="relative w-full h-full hidden lg:block">
+    <main className="grid h-screen w-screen grid-cols-1 lg:grid-cols-2">
+      <div className="relative hidden h-full w-full lg:block">
         <Image src="/login-bg.jpg" alt="bg" fill />
       </div>
-      <div className="w-full flex justify-center items-center">{children}</div>
+      <div className="flex w-full items-center justify-center lg:items-start lg:pt-[30vh]">
+        {children}
+      </div>
     </main>
   );
 }
