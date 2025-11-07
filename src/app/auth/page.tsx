@@ -270,7 +270,7 @@ export default function AuthPage() {
                   const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
 
                   return (
-                    <Field data-invalid={isInvalid} className="gap-1">
+                    <Field data-invalid={isInvalid}>
                       <FieldLabel dir="rtl" htmlFor={field.name}>
                         رمزعبور:
                       </FieldLabel>
@@ -302,7 +302,7 @@ export default function AuthPage() {
       </Tabs>
 
       <Button
-        className="/rounded-lg bg-primary h-10 w-full cursor-pointer pb-3"
+        className="bg-primary h-10 w-full cursor-pointer pb-3"
         onClick={() => {
           if (tabValue === "phone") phoneForm.handleSubmit();
           else emailForm.handleSubmit();
