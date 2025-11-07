@@ -168,56 +168,73 @@ export default function AuthPage() {
                         شماره تماس:
                       </FieldLabel>
 
-                      <div className="flex">
-                        <Select onValueChange={e => setCode(e)} value={code}>
-                          <SelectTrigger className="-mr-px w-[100px] rounded-none">
-                            <SelectValue placeholder="" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectGroup>
-                              {/* <SelectLabel>Fruits</SelectLabel> */}
-                              <SelectItem value="98" data-selected={code === "98"}>
-                                <span className="flex w-[60px] items-center justify-between">
-                                  +۹۸
-                                  <Image src="/ir.png" alt="icon" width={24} height={24} />
-                                </span>
-                              </SelectItem>
-                              <SelectItem value="93" data-selected={code === "93"}>
-                                <span className="flex w-[60px] items-center justify-between">
-                                  +۹۳
-                                  <Image src="/af.png" alt="icon" width={24} height={24} />
-                                </span>
-                              </SelectItem>
-                              <SelectItem value="90" data-selected={code === "90"}>
-                                <span className="flex w-[60px] items-center justify-between">
-                                  +۹۰
-                                  <Image src="/tr.png" alt="icon" width={24} height={24} />
-                                </span>
-                              </SelectItem>
-                            </SelectGroup>
-                          </SelectContent>
-                        </Select>
+                      <div>
+                        <div className="flex">
+                          <Select onValueChange={e => setCode(e)} value={code}>
+                            <SelectTrigger className="-mr-px w-[100px] rounded-none">
+                              <SelectValue placeholder="" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectGroup>
+                                {/* <SelectLabel>Fruits</SelectLabel> */}
+                                <SelectItem value="98" data-selected={code === "98"}>
+                                  <span className="flex w-[60px] items-center justify-between">
+                                    +۹۸
+                                    <Image
+                                      src="/ir.png"
+                                      alt="icon"
+                                      width={24}
+                                      height={24}
+                                    />
+                                  </span>
+                                </SelectItem>
+                                <SelectItem value="93" data-selected={code === "93"}>
+                                  <span className="flex w-[60px] items-center justify-between">
+                                    +۹۳
+                                    <Image
+                                      src="/af.png"
+                                      alt="icon"
+                                      width={24}
+                                      height={24}
+                                    />
+                                  </span>
+                                </SelectItem>
+                                <SelectItem value="90" data-selected={code === "90"}>
+                                  <span className="flex w-[60px] items-center justify-between">
+                                    +۹۰
+                                    <Image
+                                      src="/tr.png"
+                                      alt="icon"
+                                      width={24}
+                                      height={24}
+                                    />
+                                  </span>
+                                </SelectItem>
+                              </SelectGroup>
+                            </SelectContent>
+                          </Select>
 
-                        <Input
-                          id={field.name}
-                          name={field.name}
-                          value={field.state.value}
-                          onChange={e =>
-                            field.handleChange(toPersianNumber(e.target.value))
-                          }
-                          onBlur={field.handleBlur}
-                          onKeyDown={handleKeyDown}
-                          aria-invalid={isInvalid}
-                          placeholder="شماره تماس"
-                          className="placeholder:text-sm"
-                        />
+                          <Input
+                            id={field.name}
+                            name={field.name}
+                            value={field.state.value}
+                            onChange={e =>
+                              field.handleChange(toPersianNumber(e.target.value))
+                            }
+                            onBlur={field.handleBlur}
+                            onKeyDown={handleKeyDown}
+                            aria-invalid={isInvalid}
+                            placeholder="شماره تماس"
+                            className="placeholder:text-sm"
+                          />
+                        </div>
+                        {isInvalid && (
+                          <FieldError
+                            className="text-right text-xs"
+                            errors={[field.state.meta.errors[0]]}
+                          />
+                        )}
                       </div>
-                      {isInvalid && (
-                        <FieldError
-                          className="text-right text-xs"
-                          errors={[field.state.meta.errors[0]]}
-                        />
-                      )}
                     </Field>
                   );
                 }}
